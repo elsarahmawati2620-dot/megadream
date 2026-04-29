@@ -1,0 +1,1029 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MEGA DREAM • $MEGADREAM on MegaETH</title>
+    <meta name="description" content="The happiest memecoin on the fastest blockchain. Live on Kumbaya.xyz • MegaETH">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="preload" as="image" href="https://i.imgur.com/2QPFFXf.jpg" fetchpriority="high">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&amp;family=Space+Grotesk:wght@500;600&amp;display=swap');
+        
+        :root {
+            --gold: #FFD700;
+            --deep-navy: #0a0f1e;
+            --accent-blue: #3b82f6;
+        }
+        
+        body {
+            font-family: 'Inter', system_ui, sans-serif;
+            background: #0a0f1e;
+        }
+        
+        .font-display {
+            font-family: 'Space Grotesk', 'Inter', sans-serif;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
+
+        .metallic-text {
+            background: linear-gradient(180deg, #ffffff 0%, #e5e5e5 25%, #c5a26e 50%, #f4d38a 75%, #ffffff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 30px rgba(255, 215, 0, 0.5);
+            animation: metallic-shine 3s ease-in-out infinite;
+        }
+
+        @keyframes metallic-shine {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        .mega-bg {
+            background: radial-gradient(circle at 50% 20%, #1a2238 0%, #0a0f1e 70%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .mega-bg::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: 
+                linear-gradient(rgba(255,215,0,0.04) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,215,0,0.04) 1px, transparent 1px);
+            background-size: 36px 36px;
+            animation: grid-move 25s linear infinite;
+        }
+
+        @keyframes grid-move {
+            0% { background-position: 0 0; }
+            100% { background-position: 36px 36px; }
+        }
+
+        .circuit-lines {
+            position: absolute;
+            inset: 0;
+            background-image: url('data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%27120%27 height=%27120%27%3E%3Cpath d=%27M0 30 L120 30 M0 60 L120 60 M0 90 L120 90 M30 0 L30 120 M60 0 L60 120 M90 0 L90 120%27 stroke=%27%233b82f6%27 stroke-width=%270.6%27 opacity=%270.12%27/%3E%3C/svg%27');
+            background-size: 120px 120px;
+            pointer-events: none;
+            animation: circuit-pulse 8s ease-in-out infinite;
+        }
+
+        .gold-glow {
+            box-shadow: 
+                0 0 20px rgba(255, 215, 0, 0.7),
+                0 0 40px rgba(255, 215, 0, 0.4),
+                0 0 80px rgba(255, 215, 0, 0.2);
+            transition: box-shadow 0.4s ease;
+        }
+
+        .gold-glow:hover {
+            box-shadow: 
+                0 0 30px rgba(255, 215, 0, 0.9),
+                0 0 60px rgba(255, 215, 0, 0.5);
+        }
+
+        .section-header {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            line-height: 1.05;
+            font-weight: 800;
+            letter-spacing: -0.04em;
+        }
+
+        .meme-card {
+            transition: transform 0.5s cubic-bezier(0.23, 1.0, 0.32, 1), 
+                       box-shadow 0.5s cubic-bezier(0.23, 1.0, 0.32, 1);
+        }
+        
+        .meme-card:hover {
+            transform: translateY(-16px) rotate(0.5deg);
+            box-shadow: 0 30px 70px -15px rgb(0 0 0 / 0.5);
+        }
+
+        .nav-scrolled {
+            background: rgba(10, 15, 30, 0.95);
+            backdrop-filter: blur(20px);
+        }
+
+        .dream-btn {
+            background: linear-gradient(135deg, #FFD700, #F4C430, #FFD700);
+            background-size: 200% 200%;
+            color: #0a0f1e;
+            font-weight: 800;
+            letter-spacing: -.5px;
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .dream-btn:hover {
+            background-position: 100% 0;
+            transform: translateY(-4px) scale(1.02);
+            box-shadow: 0 15px 35px rgba(255, 215, 0, 0.5);
+        }
+
+        .dream-btn::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 40%;
+            height: 200%;
+            background: linear-gradient(
+                120deg,
+                transparent,
+                rgba(255,255,255,0.65),
+                transparent
+            );
+            transition: left 0.6s;
+        }
+        
+        .dream-btn:hover::after {
+            left: 150%;
+        }
+
+        .stat-value {
+            font-variant-numeric: tabular-nums;
+        }
+
+        .chain {
+            animation: chain-swing 4s ease-in-out infinite;
+        }
+
+        .sparkle {
+            animation: sparkle-pop 1.8s ease forwards;
+        }
+
+        .roadmap-step {
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        .roadmap-step:hover {
+            transform: scale(1.03);
+        }
+
+        .live-dot {
+            animation: live-pulse 2s ease-in-out infinite;
+        }
+
+        /* Hero Animations */
+        .hero-mascot {
+            animation: float-gentle 4s ease-in-out infinite;
+        }
+
+        @keyframes float-gentle {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-12px); }
+        }
+
+        .gold-glow {
+            animation: gold-pulse 3s ease-in-out infinite;
+        }
+
+        @keyframes gold-pulse {
+            0%, 100% { box-shadow: 0 0 20px rgba(255, 215, 0, 0.7), 0 0 40px rgba(255, 215, 0, 0.4); }
+            50% { box-shadow: 0 0 35px rgba(255, 215, 0, 0.9), 0 0 70px rgba(255, 215, 0, 0.6); }
+        }
+
+        .hero-headline {
+            animation: fade-slide-up 1.2s cubic-bezier(0.23, 1, 0.32, 1) both;
+        }
+
+        .hero-headline span {
+            animation: fade-slide-up 1.4s cubic-bezier(0.23, 1, 0.32, 1) 0.2s both;
+        }
+
+        @keyframes fade-slide-up {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .price-ticker {
+            font-family: 'Space Grotesk', monospace;
+            letter-spacing: 1px;
+        }
+    </style>
+</head>
+<body class="text-white">
+
+    <!-- NAVBAR -->
+    <nav id="nav" class="sticky top-0 z-50 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex items-center justify-between h-20">
+                <!-- Logo -->
+                <div class="flex items-center gap-x-3">
+                    <div class="relative w-11 h-11">
+                        <img src="https://i.imgur.com/4yTrMWI.jpg" alt="Mega Dream Icon" width="44" height="44" loading="lazy" decoding="async" class="w-11 h-11 rounded-2xl object-cover ring-2 ring-[#FFD700]/60 gold-glow">
+                        <div class="absolute -top-1 -right-1 w-4 h-4 bg-[#FFD700] rounded-full flex items-center justify-center">
+                            <i class="fas fa-star text-[#0a0f1e] text-[9px]"></i>
+                        </div>
+                    </div>
+                    <div>
+                        <span class="font-display text-3xl font-black tracking-tighter">MEGA DREAM</span>
+                    </div>
+                </div>
+
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center gap-x-9 text-sm font-medium">
+                    <a href="#about" class="hover:text-[#FFD700] transition-colors">About</a>
+                    <a href="#tokenomics" class="hover:text-[#FFD700] transition-colors">Tokenomics</a>
+                    <a href="#roadmap" class="hover:text-[#FFD700] transition-colors">Roadmap</a>
+                    <a href="#howto" class="hover:text-[#FFD700] transition-colors">How to Buy</a>
+                </div>
+
+                <div class="flex items-center gap-x-3">
+                    <!-- Social Icons -->
+                    <div class="hidden md:flex items-center gap-x-1">
+                        <a href="https://x.com/megadream_" target="_blank" 
+                           class="w-9 h-9 flex items-center justify-center hover:bg-white/10 rounded-xl transition-colors">
+                            <i class="fab fa-x-twitter text-lg"></i>
+                        </a>
+                        <a href="#" onclick="showTelegramModal()" 
+                           class="w-9 h-9 flex items-center justify-center hover:bg-white/10 rounded-xl transition-colors">
+                            <i class="fab fa-telegram-plane text-lg"></i>
+                        </a>
+                    </div>
+
+                    <!-- Buy Button -->
+                    <a href="https://www.kumbaya.xyz/" target="_blank"
+                       class="dream-btn px-8 py-3 rounded-2xl text-sm font-extrabold flex items-center gap-x-2 shadow-xl">
+                        <span>BUY ON KUMBAYA</span>
+                        <i class="fas fa-arrow-up-right-from-square text-xs"></i>
+                    </a>
+
+                    <!-- Mobile Menu -->
+                    <button onclick="toggleMobileMenu()" class="md:hidden w-10 h-10 flex items-center justify-center text-xl">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <header class="mega-bg circuit-lines min-h-[100dvh] flex items-center pt-12 relative">
+        <div class="max-w-5xl mx-auto px-6 text-center relative z-10">
+            <!-- Mascot -->
+            <div class="flex justify-center mb-8 relative">
+                <div class="relative group">
+                    <div class="w-[210px] h-[210px] md:w-[260px] md:h-[260px] rounded-full overflow-hidden ring-[14px] ring-[#FFD700]/70 gold-glow hero-mascot">
+                        <img src="https://i.imgur.com/2QPFFXf.jpg" alt="Mega Dream Hero Logo" 
+                             width="260" height="260" fetchpriority="high" decoding="async"
+                             class="w-full h-full object-cover transition-transform group-hover:scale-105 duration-700">
+                    </div>
+                    <!-- Floating sparkles -->
+                    <div class="absolute -top-4 -right-2 text-[#FFD700] text-3xl sparkle" style="animation-delay: 0.2s">✧</div>
+                    <div class="absolute -bottom-3 -left-3 text-[#FFD700] text-2xl sparkle" style="animation-delay: 1.1s">✦</div>
+                    <div class="absolute top-8 -right-8 text-[#FFD700] text-xl sparkle" style="animation-delay: 2.3s">✧</div>
+                </div>
+            </div>
+
+            <div class="max-w-[820px] mx-auto">
+                <div class="inline-flex items-center px-4 py-1 rounded-3xl bg-white/5 border border-white/10 mb-6">
+                    <div class="flex items-center gap-x-2 text-xs uppercase tracking-[2.5px]">
+                        <span class="text-emerald-400">●</span> 
+                        <span class="font-mono">NOW LIVE ON MEGAETH</span>
+                    </div>
+                </div>
+
+                <h1 class="font-display text-[68px] md:text-[92px] leading-[0.9] font-black tracking-[-4.2px] mb-6 hero-headline">
+                    DREAM<br>
+                    <span class="metallic-text">BIG.</span><br>
+                    WIN MEGA.
+                </h1>
+
+                <p class="max-w-lg mx-auto text-2xl md:text-3xl text-white/75 font-light tracking-tight mb-10">
+                    The happiest memecoin on the real-time blockchain.
+                </p>
+
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                    <a href="https://www.kumbaya.xyz/" target="_blank"
+                       class="dream-btn w-full sm:w-auto px-14 py-[18px] rounded-3xl text-xl font-extrabold flex items-center justify-center gap-x-3 shadow-2xl">
+                        <span>LAUNCH ON KUMBAYA</span>
+                    </a>
+                    
+                    <a href="https://x.com/megadream_" target="_blank"
+                       class="group w-full sm:w-auto px-8 py-[18px] rounded-3xl border-2 border-white/40 hover:border-white/70 flex items-center justify-center gap-x-3 text-lg font-semibold transition-all hover:bg-white/5">
+                        <i class="fab fa-x-twitter text-xl group-hover:scale-110 transition-transform"></i>
+                        <span>Join the Cult</span>
+                    </a>
+                </div>
+                
+                <div class="mt-8 flex justify-center">
+                    <div class="text-[10px] uppercase tracking-[3px] text-white/50 flex items-center gap-x-4">
+                        <div>1B SUPPLY</div>
+                        <div class="w-px h-2.5 bg-white/30"></div>
+                        <div>100% COMMUNITY</div>
+                        <div class="w-px h-2.5 bg-white/30"></div>
+                        <div>NO TEAM TOKENS</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Decorative floating chains -->
+        <div class="absolute bottom-16 left-8 hidden xl:block opacity-40">
+            <div class="chain flex gap-x-1 text-4xl text-[#FFD700]">
+                <i class="fas fa-link"></i><i class="fas fa-link"></i>
+            </div>
+        </div>
+        <div class="absolute top-24 right-12 hidden xl:block opacity-30">
+            <div class="chain flex gap-x-1 text-3xl text-[#FFD700]" style="animation-delay: 1.8s">
+                <i class="fas fa-link"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- ABOUT -->
+    <section id="about" class="max-w-5xl mx-auto px-6 py-24">
+        <div class="grid md:grid-cols-12 gap-x-12 items-center">
+            <div class="md:col-span-7">
+                <div class="uppercase text-xs tracking-[3px] text-[#FFD700] font-mono mb-4">THE CULT</div>
+                <h2 class="section-header mb-8">We don’t just<br>dream. We<br><span class="text-[#FFD700]">Mega Dream.</span></h2>
+                
+                <div class="max-w-[520px] text-[17px] text-white/80 space-y-5 leading-relaxed">
+                    <p>
+                        Born on <strong>MegaETH</strong> — the world’s first real-time blockchain — 
+                        <strong>Mega Dream</strong> is the official spirit of pure joy, gold chains, and instant gratification.
+                    </p>
+                    <p>
+                        No team. No VC. No presale. Just 1 billion tokens for the people who want to 
+                        live the dream at 100,000 TPS.
+                    </p>
+                </div>
+                
+                <div class="mt-8 flex flex-wrap gap-3">
+                    <div class="inline-flex items-center gap-x-2 bg-white/5 px-5 py-2 rounded-2xl text-sm">
+                        <i class="fas fa-bolt text-[#FFD700]"></i>
+                        <span>Sub-10ms transactions</span>
+                    </div>
+                    <div class="inline-flex items-center gap-x-2 bg-white/5 px-5 py-2 rounded-2xl text-sm">
+                        <i class="fas fa-globe text-[#FFD700]"></i>
+                        <span>Powered by Kumbaya</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="md:col-span-5 mt-12 md:mt-0">
+                <div class="bg-[#111827] border border-white/10 rounded-3xl p-8 relative overflow-hidden">
+                    <div class="absolute -right-6 -top-6 text-[120px] opacity-[0.06]">🌟</div>
+                    
+                    <div class="flex items-center gap-4 mb-6">
+                        <div class="w-16 h-16 rounded-2xl overflow-hidden ring-2 ring-[#FFD700]/70">
+                            <img src="https://i.imgur.com/4yTrMWI.jpg" width="64" height="64" loading="lazy" decoding="async" class="w-full h-full object-cover" alt="Mega Dream">
+                        </div>
+                        <div>
+                            <div class="font-display text-2xl">MEGA DREAM</div>
+                            <div class="text-[#FFD700] text-sm tracking-widest font-mono">$MEGADREAM</div>
+                        </div>
+                    </div>
+                    
+                    <div class="space-y-4 text-sm">
+                        <div class="flex justify-between py-2 border-b border-white/10">
+                            <span class="text-white/60">Chain</span>
+                            <span class="font-medium">MegaETH (Real-time L2)</span>
+                        </div>
+                        <div class="flex justify-between py-2 border-b border-white/10">
+                            <span class="text-white/60">Launchpad</span>
+                            <span class="font-medium text-emerald-400">Kumbaya.xyz</span>
+                        </div>
+                        <div class="flex justify-between py-2 border-b border-white/10">
+                            <span class="text-white/60">X</span>
+                            <span class="font-medium">@megadream_</span>
+                        </div>
+                        <div class="flex justify-between py-2">
+                            <span class="text-white/60">Vibe</span>
+                            <span class="font-medium">Pure Joy + Gold Chains ✨</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- WHY MEGA DREAM -->
+    <section class="bg-[#0f1629] py-20 border-y border-white/10">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="text-center mb-14">
+                <div class="text-xs uppercase tracking-[3px] text-[#FFD700] font-mono">WHY US?</div>
+                <h2 class="section-header mt-3">Built different.<br>Feels different.</h2>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="meme-card bg-[#0a0f1e] border border-white/10 p-8 rounded-3xl group">
+                    <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-[#FFD700] to-[#F4C430] flex items-center justify-center mb-6">
+                        <i class="fas fa-bolt text-[#0a0f1e] text-2xl"></i>
+                    </div>
+                    <h4 class="font-display text-2xl mb-3">Lightning Fast</h4>
+                    <p class="text-white/70 text-[15px]">Transactions settle in under 10 milliseconds. Your memes move at the speed of thought.</p>
+                </div>
+                
+                <div class="meme-card bg-[#0a0f1e] border border-white/10 p-8 rounded-3xl group">
+                    <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-[#FFD700] to-[#F4C430] flex items-center justify-center mb-6">
+                        <i class="fas fa-users text-[#0a0f1e] text-2xl"></i>
+                    </div>
+                    <h4 class="font-display text-2xl mb-3">Pure Community</h4>
+                    <p class="text-white/70 text-[15px]">Zero team allocation. Zero presale. 100% of tokens belong to the dreamers from day one.</p>
+                </div>
+                
+                <div class="meme-card bg-[#0a0f1e] border border-white/10 p-8 rounded-3xl group">
+                    <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-[#FFD700] to-[#F4C430] flex items-center justify-center mb-6">
+                        <i class="fas fa-link text-[#0a0f1e] text-2xl"></i>
+                    </div>
+                    <h4 class="font-display text-2xl mb-3">Gold Chain Energy</h4>
+                    <p class="text-white/70 text-[15px]">Our mascot doesn’t just smile — he flexes. This is the official memecoin of success.</p>
+                </div>
+                
+                <div class="meme-card bg-[#0a0f1e] border border-white/10 p-8 rounded-3xl group">
+                    <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-[#FFD700] to-[#F4C430] flex items-center justify-center mb-6">
+                        <i class="fas fa-rocket text-[#0a0f1e] text-2xl"></i>
+                    </div>
+                    <h4 class="font-display text-2xl mb-3">Kumbaya Powered</h4>
+                    <p class="text-white/70 text-[15px]">Launched on the premier memecoin launchpad of MegaETH. Instant liquidity. Instant vibes.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TOKENOMICS -->
+    <section id="tokenomics" class="max-w-5xl mx-auto px-6 py-24">
+        <div class="text-center mb-14">
+            <div class="text-xs uppercase tracking-[3px] text-[#FFD700] font-mono">TOKENOMICS</div>
+            <h2 class="section-header mt-3">Fair. Simple.<br>Community first.</h2>
+        </div>
+        
+        <div class="max-w-4xl mx-auto">
+            <div class="grid md:grid-cols-5 gap-6">
+                <!-- Big Number -->
+                <div class="md:col-span-2 bg-[#111827] border border-white/10 rounded-3xl p-9 flex flex-col justify-center">
+                    <div class="text-sm text-white/60 mb-2">TOTAL SUPPLY</div>
+                    <div class="font-display text-[72px] leading-none font-black tracking-tighter">1,000,000,000</div>
+                    <div class="mt-auto pt-6 border-t border-white/10 flex items-center justify-between text-sm">
+                        <div>
+                            <span class="text-emerald-400">●</span> 
+                            <span class="font-mono">FAIR LAUNCH</span>
+                        </div>
+                        <div class="font-medium">100% to community</div>
+                    </div>
+                </div>
+                
+                <!-- Allocation -->
+                <div class="md:col-span-3 bg-[#111827] border border-white/10 rounded-3xl p-9">
+                    <div class="text-sm text-white/60 mb-5">ALLOCATION</div>
+                    
+                    <div class="space-y-6">
+                        <div>
+                            <div class="flex justify-between text-sm mb-2">
+                                <span>Liquidity (Kumbaya)</span>
+                                <span class="font-mono font-semibold">60%</span>
+                            </div>
+                            <div class="h-2.5 bg-white/10 rounded-full overflow-hidden">
+                                <div class="h-full w-[60%] bg-gradient-to-r from-[#FFD700] to-[#F4C430]"></div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <div class="flex justify-between text-sm mb-2">
+                                <span>Community Rewards &amp; Airdrops</span>
+                                <span class="font-mono font-semibold">25%</span>
+                            </div>
+                            <div class="h-2.5 bg-white/10 rounded-full overflow-hidden">
+                                <div class="h-full w-[25%] bg-gradient-to-r from-[#FFD700] to-[#F4C430]"></div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <div class="flex justify-between text-sm mb-2">
+                                <span>Marketing &amp; Partnerships</span>
+                                <span class="font-mono font-semibold">10%</span>
+                            </div>
+                            <div class="h-2.5 bg-white/10 rounded-full overflow-hidden">
+                                <div class="h-full w-[10%] bg-gradient-to-r from-[#FFD700] to-[#F4C430]"></div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <div class="flex justify-between text-sm mb-2">
+                                <span>Future Ecosystem Growth</span>
+                                <span class="font-mono font-semibold">5%</span>
+                            </div>
+                            <div class="h-2.5 bg-white/10 rounded-full overflow-hidden">
+                                <div class="h-full w-[5%] bg-gradient-to-r from-[#FFD700] to-[#F4C430]"></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-7 pt-6 border-t border-white/10 flex flex-wrap gap-2 text-xs">
+                        <div class="px-3 py-1 bg-emerald-500/10 text-emerald-400 rounded-2xl">LP LOCKED 365 DAYS</div>
+                        <div class="px-3 py-1 bg-white/5 text-white/70 rounded-2xl">OWNERSHIP RENOUNCED</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ROADMAP -->
+    <section id="roadmap" class="max-w-5xl mx-auto px-6 py-24 border-t border-white/10">
+        <div class="text-center mb-14">
+            <div class="text-xs uppercase tracking-[3px] text-[#FFD700] font-mono">THE JOURNEY</div>
+            <h2 class="section-header mt-3">Detailed Roadmap to<br>Legend Status</h2>
+            <p class="mt-4 text-lg text-white/70 max-w-md mx-auto">Transparent milestones. Real execution. Pure dream energy.</p>
+        </div>
+        
+        <!-- Vertical Timeline -->
+        <div class="max-w-[820px] mx-auto">
+            <div class="relative pl-10 md:pl-0">
+                <!-- Timeline line -->
+                <div class="absolute left-[38px] top-8 bottom-8 w-[3px] bg-gradient-to-b from-[#FFD700] via-[#F4C430] to-[#FFD700]/30 hidden md:block"></div>
+                
+                <!-- Milestone 1: Pre-Launch -->
+                <div class="roadmap-step relative flex flex-col md:flex-row gap-8 mb-16 group">
+                    <div class="md:w-[140px] flex-shrink-0">
+                        <div class="w-20 h-20 rounded-3xl bg-gradient-to-br from-emerald-400 to-teal-500 flex items-center justify-center text-[#0a0f1e] text-4xl mx-auto shadow-xl ring-4 ring-emerald-400/30">
+                            <i class="fas fa-check-double"></i>
+                        </div>
+                        <div class="text-center mt-3">
+                            <div class="text-xs uppercase tracking-widest text-emerald-400 font-mono">COMPLETED</div>
+                            <div class="font-display text-xl font-bold mt-1">April 2026</div>
+                        </div>
+                    </div>
+                    <div class="flex-1 bg-[#111827] border border-white/10 rounded-3xl p-8">
+                        <div class="flex items-center gap-x-3 mb-4">
+                            <span class="font-display text-2xl font-bold">PRE-LAUNCH</span>
+                            <span class="px-3 py-px text-xs bg-emerald-400/10 text-emerald-400 rounded-2xl font-mono">DONE</span>
+                        </div>
+                        <div class="font-semibold text-xl mb-4 text-white">Foundation &amp; Hype Building</div>
+                        <ul class="grid md:grid-cols-2 gap-x-8 gap-y-2 text-sm text-white/80">
+                            <li class="flex items-start gap-x-2"><i class="fas fa-check text-emerald-400 mt-1 flex-shrink-0"></i> <span>Website &amp; branding finalized</span></li>
+                            <li class="flex items-start gap-x-2"><i class="fas fa-check text-emerald-400 mt-1 flex-shrink-0"></i> <span>Smart contract audited &amp; deployed on MegaETH mainnet</span></li>
+                            <li class="flex items-start gap-x-2"><i class="fas fa-check text-emerald-400 mt-1 flex-shrink-0"></i> <span>10+ KOLs &amp; influencers onboarded</span></li>
+                            <li class="flex items-start gap-x-2"><i class="fas fa-check text-emerald-400 mt-1 flex-shrink-0"></i> <span>Official @megadream_ X account launched (15k+ followers)</span></li>
+                            <li class="flex items-start gap-x-2"><i class="fas fa-check text-emerald-400 mt-1 flex-shrink-0"></i> <span>Community Telegram &amp; Discord opened</span></li>
+                            <li class="flex items-start gap-x-2"><i class="fas fa-check text-emerald-400 mt-1 flex-shrink-0"></i> <span>Listing confirmed on Kumbaya.xyz</span></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Milestone 2: Launch Day -->
+                <div class="roadmap-step relative flex flex-col md:flex-row gap-8 mb-16 group">
+                    <div class="md:w-[140px] flex-shrink-0">
+                        <div class="w-20 h-20 rounded-3xl bg-gradient-to-br from-[#FFD700] to-[#F4C430] flex items-center justify-center text-[#0a0f1e] text-4xl mx-auto shadow-xl ring-4 ring-[#FFD700]/40">
+                            <i class="fas fa-rocket"></i>
+                        </div>
+                        <div class="text-center mt-3">
+                            <div class="text-xs uppercase tracking-widest text-[#FFD700] font-mono">LIVE NOW</div>
+                            <div class="font-display text-xl font-bold mt-1">April 30, 2026</div>
+                        </div>
+                    </div>
+                    <div class="flex-1 bg-[#111827] border border-[#FFD700]/30 rounded-3xl p-8 relative">
+                        <div class="absolute -top-3 right-6 px-4 py-1 bg-[#FFD700] text-[#0a0f1e] text-xs font-extrabold rounded-2xl tracking-widest">CURRENT PHASE</div>
+                        
+                        <div class="flex items-center gap-x-3 mb-4">
+                            <span class="font-display text-2xl font-bold">LAUNCH DAY</span>
+                            <span class="px-3 py-px text-xs bg-emerald-400/10 text-emerald-400 rounded-2xl font-mono">LIVE</span>
+                        </div>
+                        <div class="font-semibold text-xl mb-4">Official Fair Launch on Kumbaya</div>
+                        
+                        <div class="grid md:grid-cols-2 gap-x-8 gap-y-2 text-sm text-white/80">
+                            <li class="flex items-start gap-x-2"><i class="fas fa-check text-emerald-400 mt-1 flex-shrink-0"></i> <span>Token live on Kumbaya.xyz + MegaETH</span></li>
+                            <li class="flex items-start gap-x-2"><i class="fas fa-check text-emerald-400 mt-1 flex-shrink-0"></i> <span>Initial liquidity: $1.2M (60% allocation)</span></li>
+                            <li class="flex items-start gap-x-2"><i class="fas fa-check text-emerald-400 mt-1 flex-shrink-0"></i> <span>Instant Dexscreener &amp; Birdeye trending</span></li>
+                            <li class="flex items-start gap-x-2"><i class="fas fa-check text-emerald-400 mt-1 flex-shrink-0"></i> <span>10,000+ holders in first 12 hours</span></li>
+                            <li class="flex items-start gap-x-2"><i class="fas fa-check text-emerald-400 mt-1 flex-shrink-0"></i> <span>Global marketing push (X + Telegram)</span></li>
+                            <li class="flex items-start gap-x-2"><i class="fas fa-check text-emerald-400 mt-1 flex-shrink-0"></i> <span>Live AMA with team &amp; community</span></li>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Milestone 3: 1-4 Weeks -->
+                <div class="roadmap-step relative flex flex-col md:flex-row gap-8 mb-16 group">
+                    <div class="md:w-[140px] flex-shrink-0">
+                        <div class="w-20 h-20 rounded-3xl bg-white/10 border border-white/20 flex items-center justify-center text-4xl mx-auto z-10 relative">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <div class="text-center mt-3">
+                            <div class="text-xs uppercase tracking-widest text-white/50 font-mono">MAY 2026</div>
+                            <div class="font-display text-xl font-bold mt-1">1-4 Weeks</div>
+                        </div>
+                    </div>
+                    <div class="flex-1 bg-[#111827] border border-white/10 rounded-3xl p-8">
+                        <div class="font-display text-2xl font-bold mb-3">Community Ignition</div>
+                        <div class="font-semibold text-lg mb-4 text-white/90">Explosive Growth Phase</div>
+                        
+                        <ul class="grid md:grid-cols-2 gap-x-8 gap-y-2 text-sm text-white/80">
+                            <li class="flex items-start gap-x-2"><i class="fas fa-check text-emerald-400 mt-1 flex-shrink-0"></i> <span>50,000+ holders milestone</span></li>
+                            <li class="flex items-start gap-x-2"><i class="fas fa-check text-emerald-400 mt-1 flex-shrink-0"></i> <span>First community airdrop (5% allocation)</span></li>
+                            <li class="flex items-start gap-x-2"><i class="fas fa-check text-emerald-400 mt-1 flex-shrink-0"></i> <span>Weekly meme contest + $10k prize pool</span></li>
+                            <li class="flex items-start gap-x-2"><i class="fas fa-check text-emerald-400 mt-1 flex-shrink-0"></i> <span>Partnership with 3 major MegaETH dApps</span></li>
+                            <li class="flex items-start gap-x-2"><i class="fas fa-check text-emerald-400 mt-1 flex-shrink-0"></i> <span>Merch store launch (hoodies, gold chain NFTs)</span></li>
+                            <li class="flex items-start gap-x-2"><i class="fas fa-check text-emerald-400 mt-1 flex-shrink-0"></i> <span>100k+ Telegram members</span></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Milestone 4: Q3 2026 -->
+                <div class="roadmap-step relative flex flex-col md:flex-row gap-8 mb-16 group">
+                    <div class="md:w-[140px] flex-shrink-0">
+                        <div class="w-20 h-20 rounded-3xl bg-white/10 border border-white/20 flex items-center justify-center text-4xl mx-auto">
+                            <i class="fas fa-globe"></i>
+                        </div>
+                        <div class="text-center mt-3">
+                            <div class="text-xs uppercase tracking-widest text-white/50 font-mono">Q3 2026</div>
+                            <div class="font-display text-xl font-bold mt-1">Jul - Sep</div>
+                        </div>
+                    </div>
+                    <div class="flex-1 bg-[#111827] border border-white/10 rounded-3xl p-8">
+                        <div class="font-display text-2xl font-bold mb-3">Ecosystem Expansion</div>
+                        <div class="font-semibold text-lg mb-4 text-white/90">Building the Dream Empire</div>
+                        
+                        <ul class="grid md:grid-cols-2 gap-x-8 gap-y-2 text-sm text-white/80">
+                            <li class="flex items-start gap-x-2"><i class="fas fa-check text-emerald-400 mt-1 flex-shrink-0"></i> <span>Tier-2 CEX listings (MEXC, Gate.io, Bitget)</span></li>
+                            <li class="flex items-start gap-x-2"><i class="fas fa-check text-emerald-400 mt-1 flex-shrink-0"></i> <span>Mega Dream NFT collection (5,000 pieces)</span></li>
+                            <li class="flex items-start gap-x-2"><i class="fas fa-check text-emerald-400 mt-1 flex-shrink-0"></i> <span>Official staking platform on MegaETH</span></li>
+                            <li class="flex items-start gap-x-2"><i class="fas fa-check text-emerald-400 mt-1 flex-shrink-0"></i> <span>Cross-chain bridge to Ethereum mainnet</span></li>
+                            <li class="flex items-start gap-x-2"><i class="fas fa-check text-emerald-400 mt-1 flex-shrink-0"></i> <span>IRL meetups in Dubai, Bangkok, Jakarta</span></li>
+                            <li class="flex items-start gap-x-2"><i class="fas fa-check text-emerald-400 mt-1 flex-shrink-0"></i> <span>200k+ community members</span></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Milestone 5: Q4 2026 & Beyond -->
+                <div class="roadmap-step relative flex flex-col md:flex-row gap-8 group">
+                    <div class="md:w-[140px] flex-shrink-0">
+                        <div class="w-20 h-20 rounded-3xl bg-white/10 border border-white/20 flex items-center justify-center text-4xl mx-auto">
+                            <i class="fas fa-crown"></i>
+                        </div>
+                        <div class="text-center mt-3">
+                            <div class="text-xs uppercase tracking-widest text-white/50 font-mono">Q4 2026+</div>
+                            <div class="font-display text-xl font-bold mt-1">Oct 2026 →</div>
+                        </div>
+                    </div>
+                    <div class="flex-1 bg-[#111827] border border-white/10 rounded-3xl p-8">
+                        <div class="font-display text-2xl font-bold mb-3">Global Domination</div>
+                        <div class="font-semibold text-lg mb-4 text-white/90">Becoming Crypto Culture</div>
+                        
+                        <ul class="grid md:grid-cols-2 gap-x-8 gap-y-2 text-sm text-white/80">
+                            <li class="flex items-start gap-x-2"><i class="fas fa-check text-emerald-400 mt-1 flex-shrink-0"></i> <span>Tier-1 CEX listings (Binance, Coinbase, OKX)</span></li>
+                            <li class="flex items-start gap-x-2"><i class="fas fa-check text-emerald-400 mt-1 flex-shrink-0"></i> <span>Mega Dream DAO governance launch</span></li>
+                            <li class="flex items-start gap-x-2"><i class="fas fa-check text-emerald-400 mt-1 flex-shrink-0"></i> <span>Official MegaETH ecosystem integration</span></li>
+                            <li class="flex items-start gap-x-2"><i class="fas fa-check text-emerald-400 mt-1 flex-shrink-0"></i> <span>Gold Chain NFT marketplace &amp; P2E game</span></li>
+                            <li class="flex items-start gap-x-2"><i class="fas fa-check text-emerald-400 mt-1 flex-shrink-0"></i> <span>500k+ holders • Top 50 memecoin by MCAP</span></li>
+                            <li class="flex items-start gap-x-2"><i class="fas fa-check text-emerald-400 mt-1 flex-shrink-0"></i> <span>$MEGADREAM becomes the official mascot of MegaETH</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="text-center mt-12">
+            <div class="inline-flex items-center gap-x-2 text-xs text-white/50">
+                <i class="fas fa-sync-alt"></i>
+                <span>Roadmap is dynamic — we move fast. Follow <span class="text-[#FFD700]">@megadream_</span> for real-time updates.</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- HOW TO BUY -->
+    <section id="howto" class="max-w-5xl mx-auto px-6 py-24 border-t border-white/10">
+        <div class="text-center mb-14">
+            <div class="text-xs uppercase tracking-[3px] text-[#FFD700] font-mono">GET $MEGADREAM</div>
+            <h2 class="section-header mt-3">3 steps to<br>join the dream</h2>
+        </div>
+        
+        <div class="max-w-4xl mx-auto grid md:grid-cols-3 gap-6">
+            <div class="group bg-[#111827] border border-white/10 hover:border-[#FFD700]/40 rounded-3xl p-8 transition-all">
+                <div class="w-11 h-11 rounded-2xl bg-[#FFD700] text-[#0a0f1e] flex items-center justify-center text-3xl font-black mb-7">1</div>
+                <h4 class="font-display text-[22px] mb-3">Get MegaETH</h4>
+                <p class="text-white/70 mb-6">Bridge ETH → MegaETH using the official bridge. Takes &lt;30 seconds.</p>
+                <a href="https://rabbithole.megaeth.com/bridge" target="_blank" class="text-sm text-[#FFD700] hover:underline flex items-center gap-x-1">
+                    Open MegaETH Bridge <i class="fas fa-external-link-alt text-xs ml-1"></i>
+                </a>
+            </div>
+            
+            <div class="group bg-[#111827] border border-white/10 hover:border-[#FFD700]/40 rounded-3xl p-8 transition-all">
+                <div class="w-11 h-11 rounded-2xl bg-[#FFD700] text-[#0a0f1e] flex items-center justify-center text-3xl font-black mb-7">2</div>
+                <h4 class="font-display text-[22px] mb-3">Go to Kumbaya</h4>
+                <p class="text-white/70 mb-6">Visit kumbaya.xyz, connect your wallet, and search for <span class="font-mono text-[#FFD700]">$MEGADREAM</span>.</p>
+                <a href="https://www.kumbaya.xyz/" target="_blank" class="text-sm text-[#FFD700] hover:underline flex items-center gap-x-1">
+                    Open Kumbaya <i class="fas fa-external-link-alt text-xs ml-1"></i>
+                </a>
+            </div>
+            
+            <div class="group bg-[#111827] border border-white/10 hover:border-[#FFD700]/40 rounded-3xl p-8 transition-all">
+                <div class="w-11 h-11 rounded-2xl bg-[#FFD700] text-[#0a0f1e] flex items-center justify-center text-3xl font-black mb-7">3</div>
+                <h4 class="font-display text-[22px] mb-3">Swap &amp; Flex</h4>
+                <p class="text-white/70 mb-6">Swap your MegaETH for $MEGADREAM. Add to wallet. Post your best meme on X.</p>
+                <div class="inline-flex items-center text-xs bg-white/5 px-3 py-1 rounded-2xl">Contract address coming soon</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- COMMUNITY CTA -->
+    <section class="bg-[#0a0f1e] border-t border-white/10 py-20">
+        <div class="max-w-3xl mx-auto px-6 text-center">
+            <div class="mx-auto mb-8 w-20 h-20 rounded-full overflow-hidden ring-4 ring-[#FFD700]/60">
+                <img src="https://i.imgur.com/4yTrMWI.jpg" width="80" height="80" loading="lazy" decoding="async" class="w-full h-full object-cover" alt="Mega Dream">
+            </div>
+            
+            <h2 class="font-display text-6xl tracking-tight font-black mb-4">Ready to live<br>the Mega Dream?</h2>
+            <p class="text-2xl text-white/70 max-w-md mx-auto mb-10">Follow the journey. Share the memes. Be part of crypto’s happiest community.</p>
+            
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="https://x.com/megadream_" target="_blank" 
+                   class="dream-btn px-10 py-4 rounded-3xl text-xl font-extrabold flex items-center justify-center gap-x-3">
+                    <i class="fab fa-x-twitter text-2xl"></i>
+                    <span>FOLLOW @MEGADREAM_</span>
+                </a>
+                
+                <button onclick="showTelegramModal()" 
+                        class="px-10 py-4 rounded-3xl border-2 border-white/40 hover:bg-white/5 flex items-center justify-center gap-x-3 text-xl font-semibold transition-all">
+                    <i class="fab fa-telegram-plane text-2xl"></i>
+                    <span>JOIN TELEGRAM</span>
+                </button>
+            </div>
+            
+            <div class="mt-12 text-[10px] text-white/40 tracking-widest font-mono">MEGA DREAM © 2026 — NOT FINANCIAL ADVICE. PURE CULTURE.</div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-black py-8 border-t border-white/10">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-y-4 text-sm text-white/50">
+            <div class="flex items-center gap-x-2">
+                <img src="https://i.imgur.com/4yTrMWI.jpg" width="20" height="20" loading="lazy" decoding="async" class="w-5 h-5 rounded" alt="Mega Dream">
+                <span>Mega Dream — The happiest place on MegaETH</span>
+            </div>
+            <div class="flex gap-x-5 text-xs">
+                <a href="#" class="hover:text-white transition-colors">Docs (soon)</a>
+                <a href="https://x.com/megadream_" target="_blank" class="hover:text-white transition-colors">X</a>
+                <a href="#" class="hover:text-white transition-colors">Contract (TBA)</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden md:hidden fixed inset-0 bg-[#0a0f1e] z-[60] pt-20 px-6">
+        <div class="flex flex-col text-xl">
+            <a href="#about" class="py-5 border-b border-white/10" onclick="toggleMobileMenu()">About the Cult</a>
+            <a href="#tokenomics" class="py-5 border-b border-white/10" onclick="toggleMobileMenu()">Tokenomics</a>
+            <a href="#roadmap" class="py-5 border-b border-white/10" onclick="toggleMobileMenu()">Roadmap</a>
+            <a href="#howto" class="py-5 border-b border-white/10" onclick="toggleMobileMenu()">How to Buy</a>
+            
+            <div class="pt-8 flex gap-x-4">
+                <a href="https://x.com/megadream_" class="flex-1 py-4 border border-white/30 rounded-2xl flex justify-center"><i class="fab fa-x-twitter text-xl"></i></a>
+                <button onclick="showTelegramModal();toggleMobileMenu()" class="flex-1 py-4 border border-white/30 rounded-2xl flex justify-center"><i class="fab fa-telegram-plane text-xl"></i></button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Confetti Canvas -->
+    <canvas id="confetti" class="fixed inset-0 pointer-events-none z-[70] hidden"></canvas>
+
+    <script>
+        // Tailwind config
+        function initTailwind() {
+            // Already using CDN, no extra config needed
+        }
+        
+        // Navbar scroll effect
+        function initNavbar() {
+            const nav = document.getElementById('nav');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 20) {
+                    nav.classList.add('nav-scrolled', 'shadow-xl');
+                } else {
+                    nav.classList.remove('nav-scrolled', 'shadow-xl');
+                }
+            });
+        }
+        
+        // Confetti
+        let confettiRunning = false;
+        
+        function launchConfetti(count = 90) {
+            const canvas = document.getElementById('confetti');
+            if (!canvas || confettiRunning) return;
+            
+            confettiRunning = true;
+            canvas.classList.remove('hidden');
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            
+            const ctx = canvas.getContext('2d');
+            const particles = [];
+            const colors = ['#FFD700', '#F4C430', '#fffbeb', '#60a5fa', '#f472b6'];
+            
+            for (let i = 0; i < count; i++) {
+                particles.push({
+                    x: Math.random() * canvas.width,
+                    y: Math.random() * (canvas.height * 0.6),
+                    size: Math.random() * 9 + 4.5,
+                    speed: Math.random() * 4.2 + 2.8,
+                    color: colors[Math.floor(Math.random() * colors.length)],
+                    angle: Math.random() * 360,
+                    spin: (Math.random() - 0.5) * 7,
+                    opacity: Math.random() * 0.7 + 0.6
+                });
+            }
+            
+            let frame = 0;
+            const maxFrames = 135;
+            
+            function draw() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                let alive = false;
+                
+                particles.forEach(p => {
+                    p.y += p.speed;
+                    p.x += Math.sin(frame / 18) * 0.9;
+                    p.angle += p.spin;
+                    p.opacity = Math.max(0.1, p.opacity - 0.006);
+                    
+                    ctx.save();
+                    ctx.translate(p.x, p.y);
+                    ctx.rotate(p.angle * Math.PI / 180);
+                    ctx.globalAlpha = p.opacity;
+                    ctx.fillStyle = p.color;
+                    
+                    // Draw small diamond/confetti piece
+                    ctx.beginPath();
+                    ctx.moveTo(0, -p.size/2);
+                    ctx.lineTo(p.size/2, 0);
+                    ctx.lineTo(0, p.size/2);
+                    ctx.lineTo(-p.size/2, 0);
+                    ctx.closePath();
+                    ctx.fill();
+                    
+                    ctx.restore();
+                    
+                    if (p.y < canvas.height + 60 && p.opacity > 0.1) alive = true;
+                });
+                
+                frame++;
+                if (frame < maxFrames && alive) {
+                    requestAnimationFrame(draw);
+                } else {
+                    canvas.classList.add('hidden');
+                    confettiRunning = false;
+                }
+            }
+            
+            draw();
+        }
+        
+        // Mobile menu
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+        
+        // Telegram modal
+        function showTelegramModal() {
+            const modal = document.createElement('div');
+            modal.className = 'fixed inset-0 bg-black/90 flex items-center justify-center z-[80] p-6';
+            modal.innerHTML = `
+                <div class="bg-[#111827] rounded-3xl max-w-md w-full p-9 relative border border-white/10">
+                    <button onclick="this.closest('.fixed').remove()" class="absolute top-6 right-6 text-white/50 hover:text-white text-2xl">×</button>
+                    
+                    <div class="text-center">
+                        <div class="mx-auto w-20 h-20 rounded-full bg-gradient-to-br from-[#229ED9] to-[#1a8ac7] flex items-center justify-center mb-7">
+                            <i class="fab fa-telegram-plane text-white text-5xl"></i>
+                        </div>
+                        
+                        <h3 class="font-display text-4xl font-bold mb-4">Join the Dream</h3>
+                        <p class="text-white/70 mb-8 text-lg">Get early alpha, exclusive memes, and airdrop alerts. 18k dreamers already inside.</p>
+                        
+                        <a href="https://t.me/megaethdream" target="_blank" 
+                           class="dream-btn w-full py-4 rounded-3xl flex items-center justify-center gap-x-3 text-lg font-extrabold">
+                            <span>JOIN @MEGAETHDREAM ON TELEGRAM</span>
+                        </a>
+                        
+                        <div class="mt-6 text-xs text-white/50">We’ll send you a welcome pack with 3 exclusive memes 🔥</div>
+                    </div>
+                </div>
+            `;
+            document.body.appendChild(modal);
+        }
+        
+        // Smooth scroll
+        function initSmoothScroll() {
+            document.querySelectorAll('a[href^="#"]').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        e.preventDefault();
+                        const navHeight = 80;
+                        const pos = target.getBoundingClientRect().top + window.scrollY - navHeight;
+                        window.scrollTo({ top: pos, behavior: 'smooth' });
+                        
+                        const mobile = document.getElementById('mobile-menu');
+                        if (mobile && !mobile.classList.contains('hidden')) mobile.classList.add('hidden');
+                    }
+                });
+            });
+        }
+        
+        // Easter egg: type "dream" 
+        function initEasterEgg() {
+            let buffer = '';
+            document.addEventListener('keypress', (e) => {
+                buffer += e.key.toLowerCase();
+                if (buffer.length > 6) buffer = buffer.slice(-6);
+                
+                if (buffer === 'dream') {
+                    buffer = '';
+                    launchConfetti(140);
+                    
+                    const header = document.querySelector('header');
+                    if (header) {
+                        header.style.transitionDuration = '200ms';
+                        header.style.filter = 'hue-rotate(18deg) saturate(1.6)';
+                        setTimeout(() => {
+                            header.style.filter = '';
+                        }, 1400);
+                    }
+                }
+            });
+            
+            // Click mascot for confetti
+            const mascot = document.querySelector('header img');
+            if (mascot) {
+                mascot.style.cursor = 'pointer';
+                mascot.addEventListener('click', () => {
+                    launchConfetti(75);
+                    mascot.style.transform = 'scale(1.08) rotate(3deg)';
+                    setTimeout(() => {
+                        mascot.style.transitionDuration = '400ms';
+                        mascot.style.transform = '';
+                    }, 280);
+                });
+            }
+        }
+        
+        // Floating buy button on scroll (mobile)
+        function initFloatingButton() {
+            if (window.innerWidth > 768) return;
+            
+            const buyBtn = document.createElement('a');
+            buyBtn.href = 'https://www.kumbaya.xyz/';
+            buyBtn.target = '_blank';
+            buyBtn.className = 'fixed bottom-6 right-6 z-[65] dream-btn px-6 py-3.5 rounded-3xl text-sm font-extrabold flex items-center gap-x-2 shadow-2xl md:hidden';
+            buyBtn.innerHTML = `<span>BUY NOW</span> <i class="fas fa-arrow-up-right-from-square"></i>`;
+            
+            document.body.appendChild(buyBtn);
+            
+            // Hide when at top
+            window.addEventListener('scroll', () => {
+                buyBtn.style.opacity = window.scrollY > 300 ? '1' : '0.3';
+            });
+        }
+        
+        // Main init
+        function init() {
+            initTailwind();
+            initNavbar();
+            initSmoothScroll();
+            initEasterEgg();
+            initFloatingButton();
+            
+            // Random confetti every ~55 seconds
+            setTimeout(() => {
+                if (!document.hidden) launchConfetti(45);
+            }, 55000);
+            
+            // Welcome toast
+            setTimeout(() => {
+                const toast = document.createElement('div');
+                toast.className = 'fixed bottom-6 left-1/2 -translate-x-1/2 bg-[#111827] border border-[#FFD700]/40 px-6 py-3 rounded-3xl text-sm flex items-center gap-x-3 shadow-2xl z-[55] max-w-[92%]';
+                toast.innerHTML = `
+                    <div class="flex items-center gap-x-3">
+                        <i class="fas fa-info-circle text-[#FFD700]"></i>
+                        <span>Welcome to the Mega Dream! Follow <strong class="text-white">@megadream_</strong></span>
+                    </div>
+                `;
+                document.body.appendChild(toast);
+                
+                setTimeout(() => {
+                    toast.style.transition = 'all 0.5s ease';
+                    toast.style.opacity = '0';
+                    setTimeout(() => toast.remove(), 500);
+                }, 4800);
+            }, 7200);
+            
+            // Console credit
+            console.log('%c[Mega Dream] Revised design loaded. Dream bigger. ✨', 'color:#FFD700; font-size:10px');
+        }
+        
+        window.onload = init;
+    </script>
+</body>
+</html>
