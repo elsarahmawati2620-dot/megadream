@@ -254,7 +254,7 @@
                     </div>
 
                     <!-- Buy Button -->
-                    <a href="https://www.kumbaya.xyz/" target="_blank"
+                    <a href="https://www.kumbaya.xyz/#/launch/0x1C147EaEB23bB979cD0716790Aa84d5FfcB04420" target="_blank"
                        class="dream-btn px-8 py-3 rounded-2xl text-sm font-extrabold flex items-center gap-x-2 shadow-xl">
                         <span>BUY ON KUMBAYA</span>
                         <i class="fas fa-arrow-up-right-from-square text-xs"></i>
@@ -306,7 +306,7 @@
                 </p>
 
                 <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-                    <a href="https://www.kumbaya.xyz/" target="_blank"
+                    <a href="https://www.kumbaya.xyz/#/launch/0x1C147EaEB23bB979cD0716790Aa84d5FfcB04420" target="_blank"
                        class="dream-btn w-full sm:w-auto px-14 py-[18px] rounded-3xl text-xl font-extrabold flex items-center justify-center gap-x-3 shadow-2xl">
                         <span>LAUNCH ON KUMBAYA</span>
                     </a>
@@ -713,7 +713,7 @@
                 <div class="w-11 h-11 rounded-2xl bg-[#FFD700] text-[#0a0f1e] flex items-center justify-center text-3xl font-black mb-7">2</div>
                 <h4 class="font-display text-[22px] mb-3">Go to Kumbaya</h4>
                 <p class="text-white/70 mb-6">Visit kumbaya.xyz, connect your wallet, and search for <span class="font-mono text-[#FFD700]">$MEGADREAM</span>.</p>
-                <a href="https://www.kumbaya.xyz/" target="_blank" class="text-sm text-[#FFD700] hover:underline flex items-center gap-x-1">
+                <a href="https://www.kumbaya.xyz/#/launch/0x1C147EaEB23bB979cD0716790Aa84d5FfcB04420" target="_blank" class="text-sm text-[#FFD700] hover:underline flex items-center gap-x-1">
                     Open Kumbaya <i class="fas fa-external-link-alt text-xs ml-1"></i>
                 </a>
             </div>
@@ -722,7 +722,11 @@
                 <div class="w-11 h-11 rounded-2xl bg-[#FFD700] text-[#0a0f1e] flex items-center justify-center text-3xl font-black mb-7">3</div>
                 <h4 class="font-display text-[22px] mb-3">Swap &amp; Flex</h4>
                 <p class="text-white/70 mb-6">Swap your MegaETH for $MEGADREAM. Add to wallet. Post your best meme on X.</p>
-                <div class="inline-flex items-center text-xs bg-white/5 px-3 py-1 rounded-2xl">Contract address coming soon</div>
+                <div onclick="copyContractAddress()" class="group inline-flex items-center gap-x-2 bg-white/5 hover:bg-white/10 px-4 py-2 rounded-2xl cursor-pointer transition-all text-xs">
+                    <span class="font-mono text-[#FFD700]">0x1C147EaEB23bB979cD0716790Aa84d5FfcB04420</span>
+                    <i class="fas fa-copy text-white/50 group-hover:text-[#FFD700]"></i>
+                </div>
+                <div class="text-[10px] text-white/50 mt-1">Click to copy CA</div>
             </div>
         </div>
     </section>
@@ -765,7 +769,7 @@
             <div class="flex gap-x-5 text-xs">
                 <a href="#" class="hover:text-white transition-colors">Docs (soon)</a>
                 <a href="https://x.com/megadream_" target="_blank" class="hover:text-white transition-colors">X</a>
-                <a href="#" class="hover:text-white transition-colors">Contract (TBA)</a>
+                <a href="https://www.kumbaya.xyz/#/launch/0x1C147EaEB23bB979cD0716790Aa84d5FfcB04420" target="_blank" class="hover:text-white transition-colors">CA: 0x1C14...4420</a>
             </div>
         </div>
     </footer>
@@ -974,7 +978,7 @@
             if (window.innerWidth > 768) return;
             
             const buyBtn = document.createElement('a');
-            buyBtn.href = 'https://www.kumbaya.xyz/';
+            buyBtn.href = 'https://www.kumbaya.xyz/#/launch/0x1C147EaEB23bB979cD0716790Aa84d5FfcB04420';
             buyBtn.target = '_blank';
             buyBtn.className = 'fixed bottom-6 right-6 z-[65] dream-btn px-6 py-3.5 rounded-3xl text-sm font-extrabold flex items-center gap-x-2 shadow-2xl md:hidden';
             buyBtn.innerHTML = `<span>BUY NOW</span> <i class="fas fa-arrow-up-right-from-square"></i>`;
@@ -984,6 +988,27 @@
             // Hide when at top
             window.addEventListener('scroll', () => {
                 buyBtn.style.opacity = window.scrollY > 300 ? '1' : '0.3';
+            });
+        }
+        
+        // Copy Contract Address
+        function copyContractAddress() {
+            const ca = '0x1C147EaEB23bB979cD0716790Aa84d5FfcB04420';
+            navigator.clipboard.writeText(ca).then(() => {
+                const originalText = event.currentTarget ? event.currentTarget.innerHTML : '';
+                const toast = document.createElement('div');
+                toast.className = 'fixed bottom-8 left-1/2 -translate-x-1/2 bg-emerald-500 text-white px-6 py-3 rounded-2xl text-sm font-medium shadow-xl z-[90] flex items-center gap-x-2';
+                toast.innerHTML = `<i class="fas fa-check"></i> <span>Contract Address Copied!</span>`;
+                document.body.appendChild(toast);
+                
+                setTimeout(() => {
+                    toast.style.transition = 'all 0.4s';
+                    toast.style.opacity = '0';
+                    setTimeout(() => toast.remove(), 400);
+                }, 1800);
+            }).catch(() => {
+                // Fallback for older browsers
+                prompt('Contract Address:', ca);
             });
         }
         
